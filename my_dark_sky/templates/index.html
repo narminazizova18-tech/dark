@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dark Sky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="text-white">
+    <div class="sky-shell">
+        <div class="container py-5">
+            <div class="hero-panel mx-auto">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <p class="eyebrow mb-3">Weather, reimagined</p>
+                        <h1 class="hero-title mb-3">Track today, pick any date, and revisit the sky.</h1>
+                        <p class="hero-copy mb-0">
+                            Search for a city, use your live location, or jump to a previous day to inspect conditions with a clean forecast view.
+                        </p>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="search-panel position-relative">
+                            <label for="citySearch" class="form-label text-uppercase small text-white-50">Location</label>
+                            <div class="input-group mb-3 shadow-lg">
+                                <input type="text" id="citySearch" class="form-control border-0 text-white" placeholder="Search city...">
+                                <button class="btn btn-primary location-btn" type="button" onclick="detectLocation()">Use my spot</button>
+                            </div>
+                            <div id="searchResults" class="list-group position-absolute w-100" style="z-index: 1000;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="weatherDisplay" class="mt-5 d-none">
+                <div class="toolbar-panel mb-4">
+                    <div>
+                        <p class="text-uppercase small text-white-50 mb-2">Selected day</p>
+                        <input type="date" id="datePicker" class="form-control date-control">
+                    </div>
+                    <button id="viewWeatherBtn" class="btn btn-light action-btn" type="button">Show weather</button>
+                </div>
+
+                <div class="weather-stage">
+                    <div class="current-panel">
+                        <p id="selectedDateLabel" class="text-uppercase small text-info mb-2">Today</p>
+                        <h2 id="locationName" class="display-5 fw-bold mb-2">---</h2>
+                        <div class="display-1 fw-bold" id="mainTemp">0&deg;</div>
+                        <p id="weatherDesc" class="lead text-capitalize mb-4"></p>
+                        <div class="detail-grid">
+                            <div class="weather-card py-3 px-4">
+                                <span class="detail-label">Humidity</span>
+                                <span id="humidity" class="detail-value">0%</span>
+                            </div>
+                            <div class="weather-card py-3 px-4">
+                                <span class="detail-label">Wind</span>
+                                <span id="wind" class="detail-value">0 km/h</span>
+                            </div>
+                            <div class="weather-card py-3 px-4">
+                                <span class="detail-label">High</span>
+                                <span id="highTemp" class="detail-value">0&deg;</span>
+                            </div>
+                            <div class="weather-card py-3 px-4">
+                                <span class="detail-label">Low</span>
+                                <span id="lowTemp" class="detail-value">0&deg;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="forecast-panel">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <p class="text-uppercase small text-white-50 mb-1">7 day outlook</p>
+                                <h3 class="h4 mb-0">Upcoming forecast</h3>
+                            </div>
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2 g-3" id="forecastGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
